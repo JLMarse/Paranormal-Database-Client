@@ -1,0 +1,203 @@
+.App {
+    font-family: 'American Typewriter';
+    /* display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center; */
+
+}
+
+.parent {
+    height: 100%;
+    font-family: Courier;
+    border-radius: 0 !important;
+}
+
+.totalApp {
+    background: url("https://wallpapercave.com/wp/wp4339302.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fondoTransparente {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 0 !important;
+    padding: 7px;
+}
+
+.fondoTransparente-profile {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 0 !important;
+    padding: 7px;
+    width: fit-content
+}
+
+/* navigationbar styles */
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 150%;
+}
+
+.logo {
+    font-size: 150%;
+    font-family: 'American Typewriter';
+}
+
+.navLinks {
+    font-size: 120%;
+    color: white;
+    margin-left: 10px;
+    font-family: 'American Typewriter';
+}
+
+.linkTarjeta {
+    text-decoration: none;
+}
+
+.cutomBoton:hover {
+    font-weight: bold;
+}
+
+.navigation-container {
+    margin-bottom: 0;
+}
+
+.homeText {
+    --bs-bg-opacity: 0.5 !important;
+    width: 70%;
+}
+
+.tituloTarjeta {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quitarBorde {
+    border-radius: 0 !important;
+}
+
+.tarjeta {}
+
+.tarjetero {
+    margin: 24px auto
+}
+
+.homeTextLight {
+    --bs-bg-opacity: 0.5 !important;
+    color: black !important;
+    width: 70%;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+    margin: 17px auto;
+    text-align: center;
+}
+
+.homeTextButton {
+    --bs-bg-color: black !important;
+    --bs-bg-opacity: 0.5 !important;
+    font-family: Courier;
+    width: 100%;
+    border-radius: 0 !important;
+
+}
+
+
+
+/* Home Page style */
+.home-container {
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 56px);
+    overflow: hidden;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    /* Agregar esta línea para eliminar cualquier relleno inferior */
+}
+
+.home-container .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+
+
+.custom-dropdown .dropdown-menu {
+    background-color: rgb(32, 30, 30);
+    color: white
+}
+
+/* footer css */
+footer {
+    background-color: #212429;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    font-size: .6em;
+    width: 100%;
+    left: 0;
+    bottom: 0
+}
+
+
+/* Edit form css */
+
+.editForm {
+    margin-top: 20px;
+}
+
+/* Event List Styles */
+
+.title-container {
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+
+.editUserContainer {
+
+    margin-top: 60px;
+
+}
+
+/* Eventsdetails */
+.favorite-button {
+    height: 40px;
+}
+
+.botones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-button.active {
+
+    border-color: green;
+    border-width: 2px;
+    /* Cambiar el ancho del borde del botón */
+    color: red;
+    /* Cambiar el color del texto del botón */
+    background-image: url("./assets/img/big_cat.jpeg");
+    /* Usar una imagen para llenar el corazón, estudiar bien esto!!!! */
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+/* Eventsdetails es para el modal, tener en cuenta que no se está enganchando*/
+.modal-90w {
+    width: 100%;
+    max-width: 500px;
+    /* Ajusta el ancho máximo según tus necesidades */
+}
