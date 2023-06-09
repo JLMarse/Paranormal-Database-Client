@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import eventsService from "../../services/events.services";
@@ -7,12 +5,16 @@ import EventsList from "../../components/EventsList/EventsList";
 import Loader from "../../components/Loader/Loader";
 
 
+//parece que con esta implementacion de la paginacion funciona todo perfecto
+
 const EventsPage = () => {
     const [allEvents, setAllEvents] = useState([]);
     const [events, setEvents] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filterType, setFilterType] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filterType, setFilterType] = useState("");
     const [searchResultsEmpty, setSearchResultsEmpty] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 9;
 
     const fetchEvents = (query) => {
         eventsService
@@ -21,7 +23,7 @@ const EventsPage = () => {
                 setEvents(data);
                 setSearchResultsEmpty(data.length === 0);
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
     };
 
     const handleSearchInputChange = (event) => {
@@ -35,8 +37,8 @@ const EventsPage = () => {
     };
 
     const handleClearSearch = () => {
-        setSearchQuery('');
-        setFilterType('');
+        setSearchQuery("");
+        setFilterType("");
         setEvents(allEvents);
         setSearchResultsEmpty(allEvents.length === 0);
     };
@@ -53,12 +55,12 @@ const EventsPage = () => {
                 setEvents(data);
                 setSearchResultsEmpty(data.length === 0);
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
     }, []);
 
     useEffect(() => {
-        const filteredEvents = allEvents.filter(event => {
-            if (filterType === '') {
+        const filteredEvents = allEvents.filter((event) => {
+            if (filterType === "") {
                 return true;
             } else {
                 return event.reportType === filterType;
@@ -69,31 +71,48 @@ const EventsPage = () => {
     }, [filterType, allEvents]);
 
     useEffect(() => {
-        if (searchQuery === '') {
+        if (searchQuery === "") {
             handleClearSearch();
         } else {
             fetchEvents(searchQuery);
         }
     }, [searchQuery]);
 
-    return (
+    const indexOfLastEvent = currentPage * itemsPerPage;
+    const indexOfFirstEvent = indexOfLastEvent - itemsPerPage;
+    const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
+    const totalPages = Math.ceil(events.length / itemsPerPage);
 
-        <Container>
+    const handlePrevPage = () => {
+        setCurrentPage((prevPage) => prevPage - 1);
+    };
+
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+    };
+
+    return (
+        <Container id="eventsPage__container">
             <h1 className="homeTextLight">Paranormal Database Events</h1>
 
             <Row>
                 <Col>
                     <Form onSubmit={handleSearchSubmit} className="mb-3">
                         <InputGroup>
-                            <FormControl className="quitarBorde"
+                            <FormControl
+                                className="borderOff"
                                 type="text"
                                 placeholder="Search events"
                                 value={searchQuery}
                                 onChange={handleSearchInputChange}
                             />
-                            <Button variant="secondary" type="submit">Search</Button>
-                            {(searchQuery !== '' || filterType !== '') && (
-                                <Button variant="secondary" onClick={handleClearSearch}>Clear</Button>
+                            <Button variant="secondary" type="submit">
+                                Search
+                            </Button>
+                            {(searchQuery !== "" || filterType !== "") && (
+                                <Button variant="secondary" onClick={handleClearSearch}>
+                                    Clear
+                                </Button>
                             )}
                         </InputGroup>
                     </Form>
@@ -105,11 +124,18 @@ const EventsPage = () => {
                     <Form>
                         <Form.Group controlId="filterType">
                             <Form.Label>Filter by Type</Form.Label>
-                            <Form.Control className="quitarBorde" as="select" value={filterType} onChange={handleFilterChange}>
+                            <Form.Control
+                                className="borderOff"
+                                as="select"
+                                value={filterType}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">All Types</option>
                                 <option value="Big Cat">Big Cat</option>
                                 <option value="Ghost / Poltergeist">Ghost / Poltergeist</option>
-                                <option value="Cryptozoology (other than big cat)">Cryptozoology (other than big cat)</option>
+                                <option value="Cryptozoology (other than big cat)">
+                                    Cryptozoology (other than big cat)
+                                </option>
                                 <option value="Fairy">Fairy</option>
                                 <option value="Folklore / Legend">Folklore / Legend</option>
                                 <option value="Demonic Dog">Demonic Dog</option>
@@ -122,15 +148,31 @@ const EventsPage = () => {
             </Row>
 
             {searchResultsEmpty ? (
-                <p>No results found.</p>
+                <p className="transparentBackground-edit">No results found.</p>
             ) : (
-                <Row className="tarjetero">
-                    {!events ? (
-                        <Loader />
-                    ) : (
-                        <EventsList events={events} />
-                    )}
-                </Row>
+                <div>
+                    <Row className="cardClass">
+                        {!events ? <Loader /> : <EventsList events={currentEvents} />}
+                    </Row>
+
+                    <div className="pagination">
+                        <Button
+                            variant="secondary"
+                            onClick={handlePrevPage}
+                            disabled={currentPage === 1}
+                        >
+                            Previous
+                        </Button>
+                        <span>{currentPage}</span>
+                        <Button
+                            variant="secondary"
+                            onClick={handleNextPage}
+                            disabled={currentPage === totalPages}
+                        >
+                            Next
+                        </Button>
+                    </div>
+                </div>
             )}
         </Container>
     );

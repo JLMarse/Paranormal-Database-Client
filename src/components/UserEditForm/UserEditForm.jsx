@@ -99,13 +99,13 @@ const UserEdit = () => {
 
         <Form onSubmit={handleSubmit}>
 
-            <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Name</Form.Label>
+            <Form.Group className=" mb-3" controlId="name">
+                <Form.Label className='transparentBackground'>Name</Form.Label>
                 <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="lastName">
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label className='transparentBackground'>Last Name</Form.Label>
                 <Form.Control type="text" value={lastName} onChange={handleInputChange} name="lastName" />
             </Form.Group>
 
@@ -116,7 +116,7 @@ const UserEdit = () => {
 
 
             <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
+                <Form.Label className='transparentBackground'>Email</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
 
@@ -125,7 +125,7 @@ const UserEdit = () => {
                 <Button variant="dark" type="submit">Update</Button>
             </div>
             <div className="d-grid">
-                <Button variant="danger" onClick={handleClick}>Delete</Button>
+                <Button variant="secondary" onClick={handleClick}>Delete</Button>
             </div>
 
         </Form >

@@ -4,10 +4,10 @@ import NewEventForm from "../../components/NewEventForm/NewEventForm"
 const NewEventPage = () => {
     return (
         <Container>
-            <h1>Paranormal Report</h1>
+            <h1 className="transparentBackground-report">Paranormal Report</h1>
             <hr />
             < NewEventForm />
-
+            s
         </Container>
     )
 }

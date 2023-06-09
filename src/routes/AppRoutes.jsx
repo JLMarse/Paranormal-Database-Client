@@ -9,12 +9,9 @@ import MyProfilePage from "../pages/MyProfilePage/MyProfilePage"
 import PrivateRoute from './PrivateRoute'
 import EventEditPage from "../pages/EventEditPage/EventEditPage"
 import EditUserPage from "../pages/EditUserPage/EditUserPage"
-/* 
-
 import AboutAuthorPage from "../pages/AboutAuthorPage/AboutAuthorPage"
- */
+//import EventsRandomPage from "../pages/EventsRandomPage/EventsRandomPage";
 
-//funciona
 const AppRoutes = () => {
 
     return (
@@ -35,13 +32,10 @@ const AppRoutes = () => {
                 <Route path="" element={<MyProfilePage />} />
             </Route>
             <Route path="/profile/:id/edit" element={<EditUserPage />} />
+            <Route path="/about" element={<AboutAuthorPage />} />
             <Route path="*" element={<h1>404</h1>} />
-/*
-            {/* } />
-            
-            <Route path="/AboutAuthorPage" element={<AboutAuthorPage />} />
-         <>/>
-                     */}
+            {/* <Route path="/random-event" element={<EventsRandomPage />} />      */}
+
 
         </Routes>
     )

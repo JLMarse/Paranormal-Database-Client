@@ -30,8 +30,8 @@ const HomePage = () => {
                 />
 
                 <Carousel.Caption className="d-flex flex-column justify-content-center align-items-center">
-                    <h3 className="text-dark bg-light homeText mt-3">Second slide label</h3>
-                    <p className="text-dark bg-light homeText mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <Button className="text-dark bg-light homeText mt-3">Do you feel lucky?</Button>
+
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

@@ -3,6 +3,7 @@ import { Navbar, Container, Nav, Modal } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth.context';
 import LoginForm from '../LoginForm/LoginForm';
+import fondo from '../../assets/img/fondo.png'
 
 const Navigation = () => {
     const { user, logout } = useContext(AuthContext);
@@ -32,8 +33,10 @@ const Navigation = () => {
                 className="navigation-container"
             >
                 <Container>
+
                     <Navbar.Brand as={Link} to="/">
-                        <span className="logo">THE PARANORMAL SPOT</span>
+                        <img src={fondo} alt="fondo" className="logo-image" />
+                        {/* <span className="logo">THE PARANORMAL SPOT</span> */}
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -49,39 +52,41 @@ const Navigation = () => {
                                 Contribute
                             </Nav.Link>
                         </Nav>
-                        <Nav>
-                            {user ? (
-                                <>
-                                    <Nav.Link
-                                        as="span"
-                                        onClick={handleLogout}
-                                        className="navLinks"
-                                    >
-                                        Cerrar sesión
-                                    </Nav.Link>
-                                    <Nav.Link
-                                        as={Link}
-                                        to="/myprofile"
-                                        className="navLinks"
-                                    >
-                                        ¡Hola, {user.name}!
-                                    </Nav.Link>
-                                </>
-                            ) : (
-                                <>
-                                    <Nav.Link as={Link} to="/signup" className="navLinks">
-                                        Signup
-                                    </Nav.Link>
-                                    <Nav.Link
-                                        as="span"
-                                        onClick={toggleModal}
-                                        className="navLinks"
-                                    >
-                                        Login
-                                    </Nav.Link>
-                                </>
-                            )}
-                        </Nav>
+                        <div className='sign'>
+                            <Nav>
+                                {user ? (
+                                    <>
+                                        <Nav.Link
+                                            as="span"
+                                            onClick={handleLogout}
+                                            className="navLinks"
+                                        >
+                                            Logout
+                                        </Nav.Link>
+                                        <Nav.Link
+                                            as={Link}
+                                            to="/myprofile"
+                                            className="navLinks"
+                                        >
+                                            Greetings, {user.name}
+                                        </Nav.Link>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Nav.Link as={Link} to="/signup" className="navLinks">
+                                            Signup
+                                        </Nav.Link>
+                                        <Nav.Link
+                                            as="span"
+                                            onClick={toggleModal}
+                                            className="navLinks"
+                                        >
+                                            Login
+                                        </Nav.Link>
+                                    </>
+                                )}
+                            </Nav>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -92,7 +97,7 @@ const Navigation = () => {
                 dialogClassName="modal-90w"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Iniciar sesión</Modal.Title>
+                    <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <LoginForm onLoginSuccess={handleLoginSuccess} toggleModal={toggleModal} />

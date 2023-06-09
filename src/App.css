@@ -1,11 +1,5 @@
 .App {
     font-family: 'American Typewriter';
-    /* display: flex;
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-    align-items: center; */
-
 }
 
 .parent {
@@ -18,18 +12,46 @@
     background: url("https://wallpapercave.com/wp/wp4339302.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed !important;
 }
 
-.fondoTransparente {
+.Approutes {
+
+    background: url("https://wallpapercave.com/wp/wp4339302.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed !important;
+
+}
+
+.transparentBackground {
     background-color: rgba(255, 255, 255, 0.8) !important;
     border-radius: 0 !important;
     padding: 7px;
 }
 
-.fondoTransparente-profile {
+.transparentBackground-fit {
     background-color: rgba(255, 255, 255, 0.8) !important;
     border-radius: 0 !important;
     padding: 7px;
+    width: fit-content
+}
+
+.transparentBackground-report {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 0 !important;
+    padding: 7px;
+    margin-top: 20px;
+    margin-left: 400px;
+    width: fit-content
+}
+
+.transparentBackground-edit {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 0 !important;
+    padding: 7px;
+    margin-top: 30px;
+    margin-left: 525px;
     width: fit-content
 }
 
@@ -40,10 +62,20 @@ a {
     font-size: 150%;
 }
 
+.logo-image {
+    width: 200px;
+    height: 50px;
+    margin-right: 30px;
+    margin-left: -120px
+        /* Agrega esta línea */
+}
+
 .logo {
     font-size: 150%;
     font-family: 'American Typewriter';
 }
+
+.sign {}
 
 .navLinks {
     font-size: 120%;
@@ -52,8 +84,14 @@ a {
     font-family: 'American Typewriter';
 }
 
-.linkTarjeta {
+.cardLink {
     text-decoration: none;
+}
+
+.welcome {
+    margin-left: 150px;
+    color: #040404;
+    font-weight: bold;
 }
 
 .cutomBoton:hover {
@@ -67,23 +105,22 @@ a {
 .homeText {
     --bs-bg-opacity: 0.5 !important;
     width: 70%;
+    font-weight: bold;
 }
 
-.tituloTarjeta {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+
+.cardContentText {
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.quitarBorde {
+.borderOff {
     border-radius: 0 !important;
 }
 
-.tarjeta {}
 
-.tarjetero {
+.cardClass {
     margin: 24px auto
 }
 
@@ -94,6 +131,7 @@ a {
     background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
     margin: 17px auto;
     text-align: center;
+    font-weight: bold;
 }
 
 .homeTextButton {
@@ -106,7 +144,6 @@ a {
 }
 
 
-
 /* Home Page style */
 .home-container {
     background-size: cover;
@@ -115,7 +152,7 @@ a {
     overflow: hidden;
     margin-bottom: 0;
     padding-bottom: 0;
-    /* Agregar esta línea para eliminar cualquier relleno inferior */
+
 }
 
 .home-container .carousel-caption {
@@ -126,7 +163,6 @@ a {
     text-align: center;
     width: 100%;
 }
-
 
 
 .custom-dropdown .dropdown-menu {
@@ -154,6 +190,11 @@ footer {
     margin-top: 20px;
 }
 
+/* Event Page */
+#eventsPage__container {
+    padding-bottom: 0.1vh;
+}
+
 /* Event List Styles */
 
 .title-container {
@@ -163,41 +204,76 @@ footer {
     margin: 10px;
 }
 
-
 .editUserContainer {
-
     margin-top: 60px;
+}
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    /* Centrar horizontalmente */
+    align-items: center;
+    /* Centrar verticalmente */
+    list-style: none;
+    margin-bottom: 10%;
 }
 
 /* Eventsdetails */
-.favorite-button {
-    height: 40px;
+
+
+.back-button {
+    margin-right: 30px;
+    margin-bottom: 30px;
 }
 
-.botones {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.edit-button {
+    margin-right: 20px;
+    margin-top: 50px;
+    width: 80px;
+
+}
+
+.favorite-button {
+    font-size: 20px;
+    height: auto;
+    width: fit-content;
 }
 
 .favorite-button.active {
-
-    border-color: green;
-    border-width: 2px;
-    /* Cambiar el ancho del borde del botón */
-    color: red;
-    /* Cambiar el color del texto del botón */
-    background-image: url("./assets/img/big_cat.jpeg");
-    /* Usar una imagen para llenar el corazón, estudiar bien esto!!!! */
-    background-repeat: no-repeat;
-    background-size: contain;
+    color: #a90303;
+    width: fit-content;
+    height: auto;
+    font-size: 20px;
 }
 
+.delete-button {
+    margin-right: 20px;
+    width: fit-content;
+    margin-top: 5px;
+}
 
-/* Eventsdetails es para el modal, tener en cuenta que no se está enganchando*/
+.cardImg {
+
+    align-items: center;
+    height: auto !important;
+    margin-left: 10rem;
+
+}
+
 .modal-90w {
     width: 100%;
     max-width: 500px;
-    /* Ajusta el ancho máximo según tus necesidades */
+}
+
+.about-text {
+    margin-top: 8rem;
+    font-size: 1.2rem;
+    padding: 50px;
+}
+
+.author-photo img {
+    width: 50%;
+    height: auto;
+    margin-left: 10rem;
+    margin-top: 9rem;
 }

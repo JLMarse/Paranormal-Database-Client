@@ -5,6 +5,9 @@ import userService from "../../services/users.services";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Row, Col, Container, Button, ButtonGroup, Card } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
+import { GiTerror } from 'react-icons/gi';
+import useSound from 'use-sound'
+import ping from './../../assets/sound/ping.mp3';
 
 const EventDetailsPage = () => {
     const { event_id } = useParams();
@@ -12,6 +15,7 @@ const EventDetailsPage = () => {
     const [event, setEvent] = useState(null);
     const { user } = useContext(AuthContext);
     const [isFavorite, setIsFavorite] = useState(false);
+    const [play] = useSound(ping);
 
     useEffect(() => {
         eventsService
@@ -49,6 +53,7 @@ const EventDetailsPage = () => {
                     });
             } else {
                 // Si no es favorito, llamar al método para agregar evento favorito
+                play()
                 userService
                     .addFavoriteEvent(user._id, event_id)
                     .then(() => {
@@ -63,58 +68,66 @@ const EventDetailsPage = () => {
     };
 
     return (
-        <Container className="tarjeta">
+
+        <Container>
             {!event ? (
                 <Loader />
             ) :
                 (
                     <>
                         <hr />
-                        <h1 className="fondoTransparente"> Tipo de evento: {event.reportType}</h1>
+                        <h1 className="transparentBackground-fit"> Report Type: {event.reportType}</h1>
                         <hr />
 
                         <Row >
                             <Col md={{ span: 6 }}>
 
-                                <Card className="mb-4 fondoTransparente">
+                                <Card className="mb-4 transparentBackground">
                                     <Card.Body>
-                                        <h3>Especificaciones</h3>
-                                        <Card.Title>{event.title}</Card.Title>
-                                        <Card.Text>
-                                            <ul>
-                                                <li>Location: {event.locationDetails}</li>
-                                                <li>Further Details: {event.furtherDetails}</li>
-                                            </ul>
+                                        <h3><u>{event.title}</u></h3>
+                                        <Card.Title className="mt-3"> <u>Location</u>: {event.locationDetails}</Card.Title>
+                                        <Card.Title> <u>Date/Time</u>: {event.date}</Card.Title>
+                                        <Card.Text className="mt-5 mb-5">
+                                            <h5>Further Comments: {event.furtherDetails}</h5>
                                         </Card.Text>
                                     </Card.Body>
-                                </Card>
-                                <hr />
 
-                                <ButtonGroup>
-                                    <Link to="/paranormalevents">
-                                        <Button variant="dark">Eventos</Button>
-                                    </Link>
+                                    <Button
+                                        variant="light" size="sm"
+                                        onClick={handleAddFavorite}
+                                        className={isFavorite ? "favorite-button active" : "favorite-button"}>
+                                        Do I like it?
+                                        <GiTerror />
+                                    </Button>
 
 
                                     {user._id === event.owner && (
                                         <Link to={`/paranormalEvents/${event_id}/edit`}>
-                                            <Button variant="dark">Edit</Button>
+                                            <Button className="edit-button" variant="dark">Edit</Button>
                                         </Link>
                                     )}
 
-                                    {user._id === event.owner && <Button variant="danger" onClick={handleDeleteEvent}>Delete</Button>}
+
+                                    {user._id === event.owner && <Button className="delete-button" variant="secondary" onClick={handleDeleteEvent}>Delete</Button>}
 
 
-                                    <Button
-                                        variant="primary"
-                                        onClick={handleAddFavorite}
-                                        className={isFavorite ? "favorite-button active" : "favorite-button"}>
-                                        Favorito
-                                    </Button>
+                                </Card>
+                                <hr />
+
+
+
+                                <ButtonGroup>
+                                    <Link to="/paranormalevents">
+                                        <Button className="back-button" variant="light">Back</Button>
+                                    </Link>
+
                                 </ButtonGroup>
+
+                                < br />
+
                             </Col>
 
-                            <Col md={{ span: 4 }}>
+                            <Col className="cardImg" md={{ span: 4 }}>
                                 <Card>
                                     <Card.Img variant="top" src={event.cover} />
                                 </Card>

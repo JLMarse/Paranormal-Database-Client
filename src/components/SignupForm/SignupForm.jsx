@@ -55,30 +55,27 @@ const SignupForm = () => {
 
         <Form onSubmit={handleSubmit}>
 
-            <Form.Group className="mb-3" controlId="name">
+            <Form.Group className="text-white fw-bold fs-5 mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="lastName">
+            <Form.Group className="text-white fw-bold fs-5 mb-3" controlId="lastName">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control type="text" value={lastName} onChange={handleInputChange} name="lastName" />
             </Form.Group>
 
-
-
-
-            <Form.Group className="mb-3" controlId="imageData">
+            <Form.Group className="text-white fw-bold fs-5 mb-3" controlId="imageData">
                 <Form.Label>Avatar (URL)</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="password">
+            <Form.Group className="text-white fw-bold fs-5 mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="email">
+            <Form.Group className="text-white fw-bold fs-5 mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>

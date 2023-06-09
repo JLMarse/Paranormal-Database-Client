@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom"
+
 const Footer = () => {
 
 
     return (
         <footer>
-            Hecho por JL. Todos los derechos reservados
-        </footer>
+            <Link to={"/about"}>
+                Made by JL
+            </Link>
+        </footer >
 
     )
 }

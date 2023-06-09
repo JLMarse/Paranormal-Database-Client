@@ -51,7 +51,11 @@ class EventService {
     addFavoriteEvent(userId, eventId) {
         return this.api.put(`/users/${userId}/favoriteEvents/add`, { eventId });
     }
-
+    /* 
+        getRandomEvent() {
+            return this.api.get('/paranormalevents/random');
+        }
+     */
 
 
 

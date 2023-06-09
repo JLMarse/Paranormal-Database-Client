@@ -33,7 +33,7 @@ const UserInfo = ({ name, lastName, avatar, email, _id }) => {
     return (
         <Row>
             <Col md={4} >
-                <div className="Card fondoTransparente">
+                <div className="Card transparentBackground">
                     <div className="upper-container">
                         <div className="image-container">
                             <img src={avatar} alt="" height="100px" width="100px" />
@@ -43,7 +43,7 @@ const UserInfo = ({ name, lastName, avatar, email, _id }) => {
                         <h3>{name}</h3>
                         <h4>{lastName}</h4>
                         <p>{email}</p>
-                        <Link to={`/profile/${_id}/edit`} className="btn btn-dark btn-sm mt-3">Editar Perfil</Link>
+                        <Link to={`/profile/${_id}/edit`} className="btn btn-dark btn-sm mt-3">Edit profile</Link>
                     </div>
                 </div>
             </Col>
@@ -53,12 +53,12 @@ const UserInfo = ({ name, lastName, avatar, email, _id }) => {
                     {favoriteEvents.length > 0 ? (
                         <ListGroup>
                             {favoriteEvents.map((event) => (
-                                <ListGroup.Item key={event._id} className="tarjetaFavorito fondoTransparente d-flex flex-column">
+                                <ListGroup.Item key={event._id} className="favoriteCardd transparentBackground d-flex flex-column">
                                     <div>
-                                        <strong>Tipo de reporte:</strong> {event.reportType}
+                                        <strong>Report Type:</strong> {event.reportType}
                                     </div>
                                     <div>
-                                        <strong>Caso:</strong> {event.title}
+                                        <strong>Case:</strong> {event.title}
                                     </div>
                                     <div className="d-flex justify-content-between">
                                         <Button className="custom-button btn-sm mt-3" onClick={() => handleRemoveFavorite(event._id)}>
@@ -72,7 +72,7 @@ const UserInfo = ({ name, lastName, avatar, email, _id }) => {
                             ))}
                         </ListGroup>
                     ) : (
-                        <p>No tienes eventos favoritos.</p>
+                        <p className="transparentBackground-fit">Add favorites Events</p>
                     )}
                 </div>
             </Col>

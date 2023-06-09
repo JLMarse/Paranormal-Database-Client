@@ -1,3 +1,21 @@
+@keyframes floating {
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes disapear {
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.EventCard:hover {
+    animation: floating 2s infinite ease-in-out, disapear 2s linear;
+    animation-fill-mode: forwards;
+
+}
+
 .EventCard img {
 
     height: 300px;

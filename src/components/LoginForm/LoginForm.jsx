@@ -2,12 +2,18 @@ import React, { useState, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import authService from '../../services/auth.services';
 import { AuthContext } from '../../contexts/auth.context';
+import useSound from 'use-sound'
+import thunder from './../../assets/sound/thunder.mp3';
+
+
 
 const LoginForm = ({ onLoginSuccess, toggleModal }) => {
     const [loginData, setLoginData] = useState({
         email: '',
         password: '',
     });
+
+    const [play] = useSound(thunder);
 
     const { authenticateUser, storeToken } = useContext(AuthContext);
 
@@ -26,6 +32,7 @@ const LoginForm = ({ onLoginSuccess, toggleModal }) => {
                 authenticateUser();
                 onLoginSuccess();
                 toggleModal();
+                play();
             })
             .catch((err) => console.log(err));
     };
@@ -35,7 +42,7 @@ const LoginForm = ({ onLoginSuccess, toggleModal }) => {
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
+                <Form.Label className='transparentBackground'>Email</Form.Label>
                 <Form.Control
                     type="email"
                     value={email}
@@ -45,7 +52,7 @@ const LoginForm = ({ onLoginSuccess, toggleModal }) => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Contraseña</Form.Label>
+                <Form.Label className='transparentBackground'>Password</Form.Label>
                 <Form.Control
                     type="password"
                     value={password}
@@ -56,7 +63,7 @@ const LoginForm = ({ onLoginSuccess, toggleModal }) => {
 
             <div className="d-grid">
                 <Button variant="dark" type="submit">
-                    Acceder
+                    Enter
                 </Button>
             </div>
         </Form>

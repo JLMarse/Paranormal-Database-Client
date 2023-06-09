@@ -25,7 +25,7 @@ const ProfilePage = () => {
 
     return (
         <Container>
-            <h1 className="fondoTransparente-profile">¡Hola, {userData.name}!</h1>
+            <h1 className="transparentBackground-fit mt-3"> Welcome, {userData.name}</h1>
             <hr />
 
             <UserInfo {...userData} />

@@ -81,8 +81,8 @@ const EventEditForm = ({ finalAction }) => {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="reportType">
-                <Form.Label>Report Type</Form.Label>
+            <Form.Group className="mb-3 " controlId="reportType">
+                <Form.Label className="transparentBackground">Report Type</Form.Label>
                 <Form.Select
                     value={event.reportType}
                     onChange={handleInputChange}
@@ -104,39 +104,39 @@ const EventEditForm = ({ finalAction }) => {
 
             <Row>
                 <Col>
-                    <Form.Group className="mb-3" controlId="title">
+                    <Form.Group className="mb-3 transparentBackground" controlId="title">
                         <Form.Label>Title</Form.Label>
                         <Form.Control type="text" value={event.title} onChange={handleInputChange} name="title" />
                     </Form.Group>
                 </Col>
 
                 <Col>
-                    <Form.Group className="mb-3" controlId="locationDetails">
+                    <Form.Group className="mb-3 transparentBackground" controlId="locationDetails">
                         <Form.Label>Location</Form.Label>
                         <Form.Control type="text" value={event.locationDetails} onChange={handleInputChange} name="locationDetails" />
                     </Form.Group>
                 </Col>
 
                 <Col>
-                    <Form.Group className="mb-3" controlId="date">
+                    <Form.Group className="mb-3 transparentBackground" controlId="date">
                         <Form.Label>Date</Form.Label>
                         <Form.Control type="text" value={event.date} onChange={handleInputChange} name="date" />
                     </Form.Group>
                 </Col>
             </Row>
 
-            <Form.Group className="mb-3" controlId="furtherDetails">
+            <Form.Group className="mb-3 transparentBackground" controlId="furtherDetails">
                 <Form.Label>Further Details -if apply- </Form.Label>
                 <Form.Control type="text" value={event.furtherDetails} onChange={handleInputChange} name="furtherDetails" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="imageData">
-                <Form.Label>Imagen (URL)</Form.Label>
+            <Form.Group className="mb-3 transparentBackground" controlId="imageData">
+                <Form.Label> Pic </Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
 
             <div className="d-grid mt-3">
-                <Button variant="dark" type="submit">Enviar</Button>
+                <Button variant="dark" type="submit">Send</Button>
             </div>
         </Form>
     )
